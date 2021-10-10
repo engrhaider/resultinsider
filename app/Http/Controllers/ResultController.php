@@ -85,8 +85,6 @@ class ResultController extends Controller
         $marksTo = $request->get('marks_to', 210);
         $province = $request->get('province', null);
 
-
-
         try {
             $query = Mdcat::query();
 
@@ -124,11 +122,11 @@ class ResultController extends Controller
 
         $resultsArray = $this->csvToArray($file);
 
-        $noOfRecordsInChunk = 100;
+        $noOfRecordsInChunk = 2000;
 
         $chunks = ceil(count($resultsArray) / $noOfRecordsInChunk);
 
-        $chunkStart = 1;
+        $chunkStart = 0;
         for ($j = 1; $j <= $chunks; $j++ ) {
             $data = array();
             $chunkEnd = $chunkStart + $noOfRecordsInChunk;
@@ -151,5 +149,74 @@ class ResultController extends Controller
         }
 
         return 'Done';
+    }
+
+    public function getProvinceMarkdsDistributionAction(Request $request, $province)
+    {
+        //echo $province;exit;
+        $provincesMapping = array(
+            'khyber-pukhtoonkhwa' => 1,
+            'fata' => 2,
+            'punjab' => 3,
+            'sindh' => 4,
+            'balochistan' => 5,
+            'islamabad' => 6,
+            'gilgit-Baltitstan' => 7
+        );
+
+        $provincesMappingHumanReadable = array(
+            1 => 'Khyber Pukhtoonkhwa',
+            2 => 'FATA',
+            3 => 'Punjab',
+            4 => 'Sindh',
+            5 => 'Balochistan',
+            6 => 'Islamabad',
+            7 => 'Gilgit Baltitstan',
+        );
+
+        $totalMarks = 210;
+
+        $chunks = $totalMarks / 5;
+        $resultSet = array();
+        $marksFrom = 1;
+
+        $provinceDetail = '';
+        $studentsAppeared = 0;
+        $studentsPassed = 0;
+        $studentsFailed = 0;
+
+        if (isset($provincesMapping[$province])) {
+            for ($i = 1; $i <= $chunks; $i++) {
+
+                $query = Mdcat::query();
+
+                $marksFrom = $marksFrom;
+                $marksTo = $marksFrom + 4;
+
+                $query->where('marks', '>=', $marksFrom)
+                    ->where('marks', '<=', $marksTo)
+                    ->where('cnic', 'like', "{$provincesMapping[$province]}%");
+
+                $range = "$marksFrom - $marksTo";
+                $resultSet[$range] = $query->select('id')->get()->count();
+                $marksFrom += 5;
+
+                $provinceDetail = $provincesMappingHumanReadable[$provincesMapping[$province]];
+            }
+
+            $studentsAppeared = Mdcat::query()->where('cnic', 'like', "{$provincesMapping[$province]}%")->get()->count();
+            $studentsPassed = Mdcat::query()->where('marks', '>', 136)->where('cnic', 'like', "{$provincesMapping[$province]}%")->get()->count();
+            $studentsFailed = $studentsAppeared - $studentsPassed;
+        }
+
+        $resultSet = array_reverse($resultSet);
+
+        return view('mdcat.provincial-analysis', array(
+            'resultSet' => $resultSet,
+            'province' => $provinceDetail,
+            'appeared' => $studentsAppeared,
+            'passed' => $studentsPassed,
+            'fail' => $studentsFailed
+        ));
     }
 }

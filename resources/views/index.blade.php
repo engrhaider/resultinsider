@@ -5,11 +5,12 @@
 
         <div class="px-4 py-5 my-5 text-center">
             <h1 class="display-5 fw-bold">ResultInsider</h1>
-            <div class="col-lg-6 mx-auto">
+            <div class="col-lg-12 mx-auto">
                 <p class="lead mb-4">Your one stop for checking all types of results and result analysis.</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="{{ route('mdcat-result')  }}" class="btn btn-outline-secondary btn-lg px-4 mr-3">Mdcat result 2021</a>
-                    <a href="{{ route('mdcat-marks-distribution')  }}" class="btn btn-primary btn-lg px-4">Mdcat marks distribution</a>
+                    <a href="{{ route('mdcat-result')  }}" class="btn btn-primary btn-lg px-4 my-2 mr-2 mb-2">Mdcat result 2021</a>
+                    <a href="{{ route('mdcat-marks-distribution') }}" class="btn btn-outline-secondary btn-lg px-4 mr-2 my-2 mb-2">Mdcat marks distribution</a>
+                    <a href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'khyber-pukhtoonkhwa'))  }}" class="btn btn-primary btn-lg px-4 my-2 mb-2">Mdcat provincial analysis</a>
                 </div>
             </div>
         </div>

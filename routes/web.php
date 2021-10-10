@@ -28,6 +28,8 @@ Route::get('/mdcat/2021/result-marks-distribution', function () {
     return view('mdcat.marks-range');
 })->name('mdcat-marks-distribution');
 
+Route::get('/mdcat/2021/province/{province}/analysis', [ResultController::class, 'getProvinceMarkdsDistributionAction'])->name('get-mdcat-result-provincial-analysis');
+
 
 Route::post('/mdcat/2021/get-result-marks-range', [ResultController::class, 'getMarksDistributionResultAction'])->name('get-mdcat-marks-range');;
 

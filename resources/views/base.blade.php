@@ -26,8 +26,9 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h3 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-muted">ResultInsider</a></h3>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="{{route('mdcat-result')}}">Mdcat 2021</a>
-        <a class="p-2 text-dark" href="{{route('mdcat-marks-distribution')}}">Mdcat Marks Distribution</a>
+{{--        <a class="p-2 text-dark" href="{{route('mdcat-result')}}">Mdcat 2021</a>--}}
+{{--        <a class="p-2 text-dark" href="{{route('mdcat-marks-distribution')}}">Mdcat Marks Distribution</a>--}}
+        <a class="p-2 text-dark" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'khyber-pukhtoonkhwa'))  }}">Mdcat Provincial Analysis</a>
     </nav>
 </div>
 
