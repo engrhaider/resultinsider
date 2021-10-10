@@ -124,13 +124,14 @@ class ResultController extends Controller
 
         $resultsArray = $this->csvToArray($file);
 
+        $noOfRecordsInChunk = 100;
 
-        $chunks = ceil(count($resultsArray) / 2000);
+        $chunks = ceil(count($resultsArray) / $noOfRecordsInChunk);
 
         $chunkStart = 1;
         for ($j = 1; $j <= $chunks; $j++ ) {
             $data = array();
-            $chunkEnd = $chunkStart + 2000;
+            $chunkEnd = $chunkStart + $noOfRecordsInChunk;
             for ($i = $chunkStart; $i < $chunkEnd; $i++)
             {
                 $data[] = [
@@ -141,9 +142,9 @@ class ResultController extends Controller
                 ];
             }
             DB::table('mdcats')->insertOrIgnore($data);
-            $chunkStart += 2000;
+            $chunkStart += $noOfRecordsInChunk;
         }
 
-        return 'Jobi done or what ever';
+        return 'Done';
     }
 }
