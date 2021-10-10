@@ -17,14 +17,14 @@
         </div>
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6 mb-4">
                 <h5>{{$province}} result analysis</h5>
                 <h5>Students appeared: <span class="badge badge-info">{{$appeared}}</span></h5>
                 <h5>Passed: <span class="badge badge-success">{{$passed}}</span></h5>
                 <h5>Fail: <span class="badge badge-danger">{{$fail}}</span></h5>
                 <h5>Pass Percentage: <span class="badge badge-success">{{($appeared > 0) ? round((($passed/$appeared) * 100), '2') : '0.00%' }}</span></h5>
             </div>
-            <div class="col-6">
+            <div class="col-sm-12 col-md-6">
                 <div class="table-responsive text-center" style="margin: auto; width: 300px">
                     @if (count($resultSet))
                         <table class="table table-bordered">
