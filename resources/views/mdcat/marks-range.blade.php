@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('page-title', 'Mdcat 2021 result marks distribution')
+@section('page-title', 'Mdcat 2021 result marks distribution - ')
 
 @section('content')
     <div class="container">

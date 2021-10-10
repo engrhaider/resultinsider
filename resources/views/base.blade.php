@@ -19,6 +19,8 @@
 
         gtag('config', 'G-XTEE892Y33');
     </script>
+
+    <script data-ad-client="ca-pub-7954804589457957" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
