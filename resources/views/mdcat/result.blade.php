@@ -22,7 +22,7 @@
         </div>
 
         <div id="result-wrapper" class="mt-5" style="display: none">
-            <table class="table table-striped">
+            <table class="table table-striped table-responsive">
                 <thead>
                 <tr>
                     <th scope="col">Roll No</th>
