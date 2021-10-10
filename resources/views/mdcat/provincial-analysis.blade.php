@@ -72,7 +72,7 @@
                     <a href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'islamabad'))  }}" class="btn btn-primary btn-lg px-4 my-2">Islamabad</a>
                 </div>
                 <div>
-                    <a href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'gilgit-balitistan'))  }}" class="btn btn-primary btn-lg px-4 my-2">Gilgit Baltistan</a>
+                    <a href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'gilgit-baltistan'))  }}" class="btn btn-primary btn-lg px-4 my-2">Gilgit Baltistan</a>
                 </div>
                 <div>
                     <a href="{{ route('mdcat-marks-distribution') }}" class="btn btn-outline-secondary btn-lg px-4 my-2">Check mark distribution by range for any province</a>

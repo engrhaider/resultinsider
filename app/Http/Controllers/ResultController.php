@@ -77,7 +77,7 @@ class ResultController extends Controller
             4 => 'Sindh',
             5 => 'Balochistan',
             6 => 'Islamabad',
-            7 => 'Gilgit Baltitstan',
+            7 => 'Gilgit Baltistan',
         );
         $response = array('success' => false, 'data' => '');
 
@@ -161,7 +161,7 @@ class ResultController extends Controller
             'sindh' => 4,
             'balochistan' => 5,
             'islamabad' => 6,
-            'gilgit-Baltitstan' => 7
+            'gilgit-baltistan' => 7
         );
 
         $provincesMappingHumanReadable = array(
@@ -171,7 +171,7 @@ class ResultController extends Controller
             4 => 'Sindh',
             5 => 'Balochistan',
             6 => 'Islamabad',
-            7 => 'Gilgit Baltitstan',
+            7 => 'Gilgit Baltistan',
         );
 
         $totalMarks = 210;
