@@ -22,20 +22,22 @@
         </div>
 
         <div id="result-wrapper" class="mt-5" style="display: none">
-            <table class="table table-striped table-responsive">
-                <thead>
-                <tr>
-                    <th scope="col">Roll No</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Marks</th>
-                    <th scope="col">REMARKS</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr id="resultRow">
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Roll No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Marks</th>
+                        <th scope="col">REMARKS</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="resultRow">
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
