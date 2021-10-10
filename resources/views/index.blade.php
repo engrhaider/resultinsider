@@ -2,11 +2,17 @@
 
 @section('content')
     <div class="container">
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <h1 class="display-4">ResultInsider</h1>
-            <p class="lead">Your one stop for checking all types of results and result analysis.</p>
-        </div>
 
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold">ResultInsider</h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4">Your one stop for checking all types of results and result analysis.</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="{{ route('mdcat-result')  }}" class="btn btn-outline-secondary btn-lg px-4 mr-3">Mdcat result 2021</a>
+                    <a href="{{ route('mdcat-marks-distribution')  }}" class="btn btn-primary btn-lg px-4">Mdcat marks distribution</a>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 

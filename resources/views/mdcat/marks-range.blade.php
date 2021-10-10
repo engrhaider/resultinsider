@@ -6,7 +6,7 @@
     <div class="container">
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">Mdcat 2021 marks distribution</h1>
-            <p class="lead">You can view nationwide or provincial marks distribution for a particular range</p>
+            <p class="lead">You can view nationwide or provincial marks distribution for a particular range. Leave province option empty to see nationwide distribution for the marks range.</p>
         </div>
 
         <div class="row">
@@ -44,6 +44,15 @@
             <div class="col-12">
                 <div id="resultWrapper" class="text-center mt-4" style="font-size: 2rem;">
                 </div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="{{ route('mdcat-result')  }}" class="btn btn-outline-secondary btn-lg px-4 mr-3">Check your Mdcat result 2021</a>
             </div>
         </div>
 

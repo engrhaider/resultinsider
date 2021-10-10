@@ -26,7 +26,7 @@ Route::post('/mdcat/2021/get-result-by-roll-no', [ResultController::class, 'getM
 
 Route::get('/mdcat/2021/result-marks-distribution', function () {
     return view('mdcat.marks-range');
-});
+})->name('mdcat-marks-distribution');
 
 
 Route::post('/mdcat/2021/get-result-marks-range', [ResultController::class, 'getMarksDistributionResultAction'])->name('get-mdcat-marks-range');;

@@ -40,6 +40,14 @@
             </div>
         </div>
 
+        <br>
+        <br>
+        <br>
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="{{ route('mdcat-marks-distribution')  }}" class="btn btn-primary px-4">Mdcat marks distribution</a>
+            </div>
+        </div>
     </div>
 @endsection
 

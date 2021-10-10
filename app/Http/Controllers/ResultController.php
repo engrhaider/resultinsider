@@ -105,7 +105,7 @@ class ResultController extends Controller
             if ($province != null && $province != '') {
                 $query->where('cnic', 'like', "{$province}%");
 
-                $province = "domiciled in <strong>{$provincesMapping[$province]}</strong>.";
+                $province = "domiciled in <strong>{$provincesMapping[$province]}</strong>";
             }
 
             $result = $query->select('id as total_count')->get()->count();
