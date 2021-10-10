@@ -134,14 +134,19 @@ class ResultController extends Controller
             $chunkEnd = $chunkStart + $noOfRecordsInChunk;
             for ($i = $chunkStart; $i < $chunkEnd; $i++)
             {
-                $data[] = [
-                    'roll_no' => $resultsArray[$i]['Roll No'],
-                    'name' => $resultsArray[$i]['Name'],
-                    'cnic' => $resultsArray[$i]['CNIC'],
-                    'marks' => $resultsArray[$i]['Marks']
-                ];
+                if (isset($resultsArray[$i])) {
+                    $data[] = [
+                        'roll_no' => $resultsArray[$i]['Roll No'],
+                        'name' => $resultsArray[$i]['Name'],
+                        'cnic' => $resultsArray[$i]['CNIC'],
+                        'marks' => $resultsArray[$i]['Marks']
+                    ];
+                }
             }
-            DB::table('mdcats')->insertOrIgnore($data);
+
+            if (count($data)) {
+                DB::table('mdcats')->insertOrIgnore($data);
+            }
             $chunkStart += $noOfRecordsInChunk;
         }
 
