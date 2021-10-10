@@ -24,8 +24,11 @@ Route::get('/mdcat/2021/result', function() {
 
 Route::post('/mdcat/2021/get-result-by-roll-no', [ResultController::class, 'getMdcatResultByRollNoAction'])->name('get-mdcat-result');
 
-Route::get('/mdcat/2021/result-marks-range', function () {
+Route::get('/mdcat/2021/result-marks-distribution', function () {
     return view('mdcat.marks-range');
 });
 
-Route::post('/mdcat/2021/get-result-marks-range', [ResultController::class, 'getMarksDistributionResultAction']);
+
+Route::post('/mdcat/2021/get-result-marks-range', [ResultController::class, 'getMarksDistributionResultAction'])->name('get-mdcat-marks-range');;
+
+Route::get('/mdcat/import-result', [ResultController::class, 'getImportResultAction']);
