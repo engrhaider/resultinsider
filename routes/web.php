@@ -34,3 +34,7 @@ Route::get('/mdcat/2021/province/{province}/analysis', [ResultController::class,
 Route::post('/mdcat/2021/get-result-marks-range', [ResultController::class, 'getMarksDistributionResultAction'])->name('get-mdcat-marks-range');;
 
 Route::get('/mdcat/import-result', [ResultController::class, 'getImportResultAction']);
+
+Route::get('/mdcat/aggregate-calculator', function () {
+    return view('mdcat.aggregate-calculator');
+});

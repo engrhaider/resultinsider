@@ -20,17 +20,57 @@
         gtag('config', 'G-XTEE892Y33');
     </script>
 
+    <style>
+        <style>
+
+        .navbar-nav {
+            flex-direction: row;
+        }
+        .nav-link {
+            padding-right: .5rem !important;
+            padding-left: .5rem !important;
+        }
+        .ml-auto .dropdown-menu {
+            left: auto !important;
+            right: 0px;
+        }
+    </style>
+    </style>
     <script data-ad-client="ca-pub-7954804589457957" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h3 class="my-0 mr-md-auto font-weight-normal"><a href="/" class="text-muted">ResultInsider</a></h3>
-    <nav class="my-2 my-md-0 mr-md-3">
-{{--        <a class="p-2 text-dark" href="{{route('mdcat-result')}}">Mdcat 2021</a>--}}
-{{--        <a class="p-2 text-dark" href="{{route('mdcat-marks-distribution')}}">Mdcat Marks Distribution</a>--}}
-        <a class="p-2 text-dark" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'khyber-pukhtoonkhwa'))  }}">Mdcat Provincial Analysis</a>
-    </nav>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/">ResultInsider</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mdcat-result')  }}">Mdcat result</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mdcat-marks-distribution')  }}">Mdcat marks distribution</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Mdcat provinicial stats
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'khyber-pukhtoonkhwa'))  }}">KPK</a>
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'punjab'))  }}">Punjab</a>
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'sindh'))  }}">Sindh</a>
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'fata'))  }}">Fata</a>
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'balochistan'))  }}">Balochistan</a>
+                        <a class="dropdown-item" href="{{ route('get-mdcat-result-provincial-analysis', array('province' => 'gilgit-baltistan'))  }}">Gilgit Baltistan</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 @yield('content')
 
