@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mdcat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use KubAT\PhpSimple\HtmlDomParser;
 
 class ResultController extends Controller
 {
@@ -118,37 +119,68 @@ class ResultController extends Controller
     }
 
     public function getImportResultAction() {
-        $file = public_path('db_import/result.csv');
+//        $file = public_path('db_import/result.csv');
+//
+//        $resultsArray = $this->csvToArray($file);
+//
+//        $noOfRecordsInChunk = 2000;
+//
+//        $chunks = ceil(count($resultsArray) / $noOfRecordsInChunk);
+//
+//        $chunkStart = 0;
+//        for ($j = 1; $j <= $chunks; $j++ ) {
+//            $data = array();
+//            $chunkEnd = $chunkStart + $noOfRecordsInChunk;
+//            for ($i = $chunkStart; $i < $chunkEnd; $i++)
+//            {
+//                if (isset($resultsArray[$i])) {
+//                    $data[] = [
+//                        'roll_no' => $resultsArray[$i]['Roll No'],
+//                        'name' => $resultsArray[$i]['Name'],
+//                        'cnic' => $resultsArray[$i]['CNIC'],
+//                        'marks' => $resultsArray[$i]['Marks']
+//                    ];
+//                }
+//            }
+//
+//            if (count($data)) {
+//                DB::table('mdcats')->insertOrIgnore($data);
+//            }
+//            $chunkStart += $noOfRecordsInChunk;
+//        }
 
-        $resultsArray = $this->csvToArray($file);
+        ini_set('max_execution_time', '0');
 
-        $noOfRecordsInChunk = 2000;
+        $rollNoFrom = 1000001;
+        $rollNoTo = 1250000;
 
-        $chunks = ceil(count($resultsArray) / $noOfRecordsInChunk);
+        for ($i = $rollNoFrom; $i <= $rollNoTo; $i++) {
+            try {
+                $mdcatResult = Mdcat::where('roll_no', '=', $i)->get();
 
-        $chunkStart = 0;
-        for ($j = 1; $j <= $chunks; $j++ ) {
-            $data = array();
-            $chunkEnd = $chunkStart + $noOfRecordsInChunk;
-            for ($i = $chunkStart; $i < $chunkEnd; $i++)
-            {
-                if (isset($resultsArray[$i])) {
-                    $data[] = [
-                        'roll_no' => $resultsArray[$i]['Roll No'],
-                        'name' => $resultsArray[$i]['Name'],
-                        'cnic' => $resultsArray[$i]['CNIC'],
-                        'marks' => $resultsArray[$i]['Marks']
-                    ];
+                if ($mdcatResult->isEmpty()) {
+                    $html = file_get_contents("https://www.pmc.gov.pk/Results/ResultsInfo?rollNo=$i&session=2021");
+
+                    if (strlen($html) > 50) {
+                        $studentData = array();
+                        $emailBodyDOMParser = HtmlDomParser::str_get_html($html);
+
+                        if (isset($emailBodyDOMParser->find('h5[id=name]')[0])) {
+                            $studentData['roll_no'] = $i;
+                            $studentData['name'] = $emailBodyDOMParser->find('h5[id=name]')[0]->innertext;
+                            $studentData['cnic'] = $emailBodyDOMParser->find('h5[id=cnic]')[0]->innertext;
+                            $studentData['marks'] = $emailBodyDOMParser->find('h5[id=omarks]')[0]->innertext;
+
+                            DB::table('mdcats')->insertOrIgnore($studentData);
+                        }
+
+                    }
                 }
+            } catch (\Exception $exception) {
             }
-
-            if (count($data)) {
-                DB::table('mdcats')->insertOrIgnore($data);
-            }
-            $chunkStart += $noOfRecordsInChunk;
         }
 
-        return 'Done';
+        echo "all done";
     }
 
     public function getProvinceMarkdsDistributionAction(Request $request, $province)
