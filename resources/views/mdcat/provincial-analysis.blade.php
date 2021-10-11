@@ -12,7 +12,7 @@
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h1 class="display-4">Mdcat Result Provincial Analysis</h1>
             @if($province)
-                <p class="lead">The table below shows the marks distribution in the province <strong>{{$province}}</strong></p>
+                <p class="lead">The table below shows the marks distribution in the province <strong>{{$province}}</strong>. At this moment the stats might not look exactly accurate because we're still short of around 5000 students results. The stats will become accurate as soon as we gather the remaining data.</p>
             @endif
         </div>
 
