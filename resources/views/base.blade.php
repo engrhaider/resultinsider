@@ -52,6 +52,9 @@
                     <a class="nav-link" href="{{ route('mdcat-result')  }}">Mdcat result</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('mdcat-aggregate-result')  }}">Mdcat Aggregate Calculator</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('mdcat-marks-distribution')  }}">Mdcat marks distribution</a>
                 </li>
                 <li class="nav-item dropdown">

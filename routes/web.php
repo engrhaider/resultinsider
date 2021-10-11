@@ -37,4 +37,4 @@ Route::get('/mdcat/import-result', [ResultController::class, 'getImportResultAct
 
 Route::get('/mdcat/aggregate-calculator', function () {
     return view('mdcat.aggregate-calculator');
-});
+})->name('mdcat-aggregate-result');
